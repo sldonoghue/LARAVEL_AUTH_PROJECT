@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
       //   'email' => 'test@example.com',
       // ]);
 
+      //? Command to seed the database: php artisan migrate:refresh --seed
+      
       \App\Models\Listing::factory(10)->create();
+
     }
 }
