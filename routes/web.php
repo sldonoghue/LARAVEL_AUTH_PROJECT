@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +15,17 @@ use App\Models\Listing;
 |
 */
 
+//Typical Naming Conventions:
+// - index() - show all listings
+// - show() - show single listing
+// - create() - show form to create new listing 
+// - store() - save new listing
+// - edit() - show form to edit listing
+// - update() - save edited listing
+// - destroy() - delete listing
+
 // All listings
-Route::get('/', function () {
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 // Use route model binding -> Single listing
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
